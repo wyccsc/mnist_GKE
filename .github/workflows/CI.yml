@@ -96,10 +96,6 @@ jobs:
         with:
           token: ${{ secrets.WORKFLOW_TOKEN }}
 
-      - name: Debug token type
-        run: |
-          git config --list
-
       - name: Calculate version
         id: bump
         run: |
