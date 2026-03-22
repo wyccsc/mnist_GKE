@@ -3,6 +3,8 @@ name: CI - Build Changed Services
 on:
   push:
     branches: [main]
+    tags-ignore:
+      - '*'
   workflow_dispatch:
   
 permissions:
@@ -42,7 +44,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          token: ${{ secrets.WORKFLOW_TOKEN }}
 
       - name: Calculate version
         id: bump
@@ -65,7 +67,7 @@ jobs:
           git config user.name "github-actions"
           git config user.email "actions@github.com"
           git tag api-${{ steps.bump.outputs.VERSION }}
-          git push origin api-${{ steps.bump.outputs.VERSION }}
+          git push https://x-access-token:${{ secrets.WORKFLOW_TOKEN }}@github.com/${{ github.repository }} api-${{ steps.bump.outputs.VERSION }}
 
       - name: Docker login
         uses: docker/login-action@v3
@@ -92,7 +94,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          token: ${{ secrets.WORKFLOW_TOKEN }}
 
       - name: Calculate version
         id: bump
@@ -115,7 +117,7 @@ jobs:
           git config user.name "github-actions"
           git config user.email "actions@github.com"
           git tag frontend-${{ steps.bump.outputs.VERSION }}
-          git push origin frontend-${{ steps.bump.outputs.VERSION }}
+          git push https://x-access-token:${{ secrets.WORKFLOW_TOKEN }}@github.com/${{ github.repository }} api-${{ steps.bump.outputs.VERSION }}
 
       - name: Docker login
         uses: docker/login-action@v3
@@ -142,7 +144,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          token: ${{ secrets.WORKFLOW_TOKEN }}
 
       - name: Calculate version
         id: bump
@@ -165,7 +167,7 @@ jobs:
           git config user.name "github-actions"
           git config user.email "actions@github.com"
           git tag model-${{ steps.bump.outputs.VERSION }}
-          git push origin model-${{ steps.bump.outputs.VERSION }}
+          git push https://x-access-token:${{ secrets.WORKFLOW_TOKEN }}@github.com/${{ github.repository }} api-${{ steps.bump.outputs.VERSION }}
 
       - name: Docker login
         uses: docker/login-action@v3
