@@ -79,8 +79,8 @@ jobs:
           context: ./api-service
           push: true
           tags: |
-            ${{ secrets.DOCKER_USERNAME }}/KGE_api_service:${{ steps.bump.outputs.VERSION }}
-            ${{ secrets.DOCKER_USERNAME }}/KGE_api_service:latest
+            ${{ secrets.DOCKER_USERNAME }}/kge_api_service:${{ steps.bump.outputs.VERSION }}
+            ${{ secrets.DOCKER_USERNAME }}/kge_api_service:latest
 
   # 🔵 Frontend
   frontend:
@@ -129,8 +129,8 @@ jobs:
           context: ./frontend-service
           push: true
           tags: |
-            ${{ secrets.DOCKER_USERNAME }}/KGE_frontend_service:${{ steps.bump.outputs.VERSION }}
-            ${{ secrets.DOCKER_USERNAME }}/KGE_frontend_service:latest
+            ${{ secrets.DOCKER_USERNAME }}/kge_frontend_service:${{ steps.bump.outputs.VERSION }}
+            ${{ secrets.DOCKER_USERNAME }}/kge_frontend_service:latest
 
   # 🟢 Model
   model:
@@ -179,5 +179,5 @@ jobs:
           context: ./model-service
           push: true
           tags: |
-            ${{ secrets.DOCKER_USERNAME }}/KGE_model_service:${{ steps.bump.outputs.VERSION }}
-            ${{ secrets.DOCKER_USERNAME }}/KGE_model_service:latest
+            ${{ secrets.DOCKER_USERNAME }}/kge_model_service:${{ steps.bump.outputs.VERSION }}
+            ${{ secrets.DOCKER_USERNAME }}/kge_model_service:latest
