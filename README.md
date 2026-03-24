@@ -62,3 +62,6 @@ You can run the application locally before deploying to GKE:
 
 Github: [mnist_Kubernetes](https://github.com/wyccsc/mnist_Kubernetes)
 
+## Other
+
+Dataset: [Kaggle Digit Recognizer](https://www.kaggle.com/competitions/digit-recognizer/data)
